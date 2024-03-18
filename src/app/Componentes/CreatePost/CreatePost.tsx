@@ -1,4 +1,4 @@
-import { addPost } from "@/lib/action";
+import { AddPost } from "@/lib/action";
 import { auth } from "@/lib/auth";
 import { getUser } from "@/lib/data";
 
@@ -12,7 +12,7 @@ export async function CreatePost() {
   return (
     <div className="pb-20 -mt-44 lg:mt-0">
       <form
-        action={addPost}
+        action={AddPost}
         className=" border-8 border-cor6 rounded-lg flex flex-col mt-0 md:w-96 md:ml-48 lg:mt-32 lg:mr-16 "
       >
         <input
