@@ -5,29 +5,31 @@ import { getPost } from "./data";
 import { Post, User, Comentario } from "./models";
 import { redirect } from "next/navigation";
 
-export const addPost = async (formData) => {
+const CheckImageValid = async (img) => {
+  let fixedImg = img;
+
+  if (!img.startsWith("/") && !img.startsWith("https://")) {
+    const indexHttp = img.indexOf("http://");
+    const indexHttps = img.indexOf("https://");
+
+    if (indexHttp !== -1 || indexHttps !== -1) {
+      fixedImg =
+        indexHttp !== -1 ? img.substring(indexHttp) : img.substring(indexHttps);
+    } else if (indexHttp == -1 || indexHttps == -1) {
+      fixedImg = "/notfound.webp";
+      console.log("URL inválida:", img);
+    }
+  }
+
+  return fixedImg;
+};
+
+export const AddPost = async (formData) => {
   const { title, desc, slug, username, img, email } =
     Object.fromEntries(formData);
-
+  CheckImageValid(img);
   try {
     connectToDb();
-
-    let fixedImg = img;
-
-    if (!img.startsWith("/") && !img.startsWith("https://")) {
-      const indexHttp = img.indexOf("http://");
-      const indexHttps = img.indexOf("https://");
-
-      if (indexHttp !== -1 || indexHttps !== -1) {
-        fixedImg =
-          indexHttp !== -1
-            ? img.substring(indexHttp)
-            : img.substring(indexHttps);
-      } else if (indexHttp == -1 || indexHttps == -1) {
-        fixedImg = "/notfound.webp";
-        console.log("URL inválida:", img);
-      }
-    }
     const newPost = new Post({
       title,
       desc,
@@ -36,14 +38,13 @@ export const addPost = async (formData) => {
       img: fixedImg,
       email,
     });
+
     await newPost.save();
   } catch (error) {
-    console.log(error);
-    return { error: "something went wrong" };
+    return { error: "Something went wrong" };
   }
   redirect("/Mural");
 };
-
 export const deletePost = async (formData) => {
   const { slug } = Object.fromEntries(formData);
   console.log(slug);
