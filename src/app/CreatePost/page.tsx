@@ -5,7 +5,7 @@ export default async function CreatePostPage() {
     <>
       <div className="lg:flex lg:flex-row">
         <div className=" h-96 text-center  md:ml-20 md:mt-12 lg:w-4/5 lg:mt-32 ">
-          <h1 className=" w-3/5 ml-16 mt-2">
+          <h1 className=" w-3/5 ml-16 mt-2 lg:ml-28">
             Vou te ensinar a enviar uma imagem para o seu Post!
           </h1>
           <div className="w-4/5 ml-8 mt-8 text-sm ">

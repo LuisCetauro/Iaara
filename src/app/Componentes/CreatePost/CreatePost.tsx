@@ -10,7 +10,7 @@ export async function CreatePost() {
   const specialSlug = Math.floor(Math.random() * 10000000);
 
   return (
-    <div className="pb-20 -mt-44">
+    <div className="pb-20 -mt-44 lg:mt-0">
       <form
         action={addPost}
         className=" border-8 border-cor6 rounded-lg flex flex-col mt-0 md:w-96 md:ml-48 lg:mt-32 lg:mr-16 "
