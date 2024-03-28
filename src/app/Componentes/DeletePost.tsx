@@ -16,7 +16,7 @@ export async function DeletePost({ post }: Props) {
     <>
       <div>
         <form action={deletePost}>
-          <input type="" defaultValue={post.slug} name="slug" className="w-0" />
+          <input type="hidden" defaultValue={post.slug} name="slug" />
           <button
             className="border-4 border-cor5 bg-cor6  rounded-2xl p-2 float-left -mt-24 ml-2 text-cor8"
             type="submit"

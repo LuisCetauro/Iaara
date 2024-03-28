@@ -27,17 +27,13 @@ export async function CreatePost() {
           placeholder="Description"
           name="desc"
         />
-        <input className="hidden" name="slug" defaultValue={`${specialSlug}`} />
+        <input type="hidden" name="slug" defaultValue={`${specialSlug}`} />
         <input
-          className="hidden"
+          type="hidden"
           name="username"
           defaultValue={`${user?.username}`}
         />
-        <input
-          className="hidden"
-          name="email"
-          defaultValue={`${user?.email}`}
-        />
+        <input type="hidden" name="email" defaultValue={`${user?.email}`} />
 
         <input
           className=" text-center  placeholder-cor6"

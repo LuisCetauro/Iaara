@@ -47,7 +47,7 @@ export const AddPost = async (formData) => {
 };
 export const deletePost = async (formData) => {
   const { slug } = Object.fromEntries(formData);
-  console.log(slug);
+
   try {
     connectToDb();
     const post = await getPost(slug);
