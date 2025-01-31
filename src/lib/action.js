@@ -1,64 +1,8 @@
 "use server";
 
 import { connectToDb } from "./connectToDb";
-import { getPost } from "./data";
-import { Post, User, Comentario } from "./models";
+import { User, Comentario, Estoque } from "./models";
 import { redirect } from "next/navigation";
-
-const CheckImageValid = async (img) => {
-  let fixedImg = img;
-
-  if (!img.startsWith("/") && !img.startsWith("https://")) {
-    const indexHttp = img.indexOf("http://");
-    const indexHttps = img.indexOf("https://");
-
-    if (indexHttp !== -1 || indexHttps !== -1) {
-      fixedImg =
-        indexHttp !== -1 ? img.substring(indexHttp) : img.substring(indexHttps);
-    } else if (indexHttp == -1 || indexHttps == -1) {
-      fixedImg = "/notfound.webp";
-      console.log("URL inválida:", img);
-    }
-  }
-
-  return fixedImg;
-};
-
-export const AddPost = async (formData) => {
-  const { title, desc, slug, username, img, email } =
-    Object.fromEntries(formData);
-  CheckImageValid(img);
-  try {
-    connectToDb();
-    const newPost = new Post({
-      title,
-      desc,
-      slug,
-      username: username,
-      img: fixedImg,
-      email,
-    });
-
-    await newPost.save();
-  } catch (error) {
-    return { error: "Something went wrong" };
-  }
-  redirect("/Mural");
-};
-export const deletePost = async (formData) => {
-  const { slug } = Object.fromEntries(formData);
-
-  try {
-    connectToDb();
-    const post = await getPost(slug);
-    await Post.deleteOne({ slug: post.slug });
-  } catch (error) {
-    console.log(error);
-    return { error: "something went wrong" };
-  }
-
-  redirect("/Admin/Mural");
-};
 
 export const addComentario = async (formData) => {
   const { nome, contato, desc, slug } = Object.fromEntries(formData);
@@ -117,6 +61,92 @@ export const AddUserCredentials = async (formData) => {
   redirect("/");
 };
 
-export const RedirectToBlog = async () => {
-  redirect("/Mural");
+export const DeleteItem = async (formData) => {
+  const { slug } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+    const res = await Estoque.findOneAndDelete({ slug: slug });
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+    return { error: "Email já cadastrado" };
+  }
+  redirect("/Admin/Mural");
+};
+
+export const UpdateValue = async (formData) => {
+  const { Valor, slug } = Object.fromEntries(formData);
+  try {
+    connectToDb();
+    const res = await Estoque.findOneAndUpdate(
+      { slug: slug },
+      { $set: { Valor: Valor } },
+      { new: true }
+    );
+  } catch (error) {
+    console.log(error);
+    return { error: "Email já cadastrado" };
+  }
+  redirect("/Admin/Mural");
+};
+
+export const UpdateQuantity = async (formData) => {
+  const { Quantidade, slug } = Object.fromEntries(formData);
+  try {
+    connectToDb();
+    const res = await Estoque.findOneAndUpdate(
+      { slug: slug },
+      { $set: { Quantidade: Quantidade } },
+      { new: true }
+    );
+  } catch (error) {
+    console.log(error);
+    return { error: "Email já cadastrado" };
+  }
+  redirect("/Admin/Mural");
+};
+
+export const addNewItem = async (formData) => {
+  const { nome, Valor, Quantidade, slug } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+    const newItem = new Estoque({
+      nome,
+      Valor,
+      Quantidade,
+      slug,
+    });
+    await newItem.save();
+  } catch (error) {
+    console.log(error);
+    return { error: "something went wrong" };
+  }
+  redirect("/Admin/Mural");
+};
+
+export const updatePassword = async (formData) => {
+  const { email, password, newPasswordcheck, newPassword } =
+    Object.fromEntries(formData);
+
+  if (newPassword !== newPasswordcheck) {
+    return { error: "As novas senhas não coincidem." };
+  }
+  try {
+    await connectToDb();
+    const user = await User.findOne({ email });
+    if (!user) {
+      return { error: "Usuário não encontrado." };
+    }
+    if (user.password !== password) {
+      return { error: "Senha antiga incorreta." };
+    }
+    user.password = newPassword;
+    await user.save();
+  } catch (error) {
+    console.log(error);
+    return { error: "something went wrong" };
+  }
+  redirect("/Admin");
 };

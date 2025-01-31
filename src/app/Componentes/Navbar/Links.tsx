@@ -20,10 +20,7 @@ function Links() {
       title: "Sobre",
       path: "/Sobre",
     },
-    {
-      title: "Mural",
-      path: "/Mural",
-    },
+
     {
       title: "Contato",
       path: "/Contato",

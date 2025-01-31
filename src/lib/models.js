@@ -25,38 +25,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const postSchema = new mongoose.Schema(
-  {
-    title: {
-      type: String,
-      required: true,
-    },
-
-    desc: {
-      type: String,
-      required: true,
-    },
-    img: {
-      type: String,
-    },
-    username: {
-      type: String,
-    },
-    slug: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    date: {
-      type: Date,
-    },
-    email: {
-      type: String,
-    },
-  },
-  { timestamps: true }
-);
-
 const ComentarioSchema = new mongoose.Schema(
   {
     nome: {
@@ -80,7 +48,29 @@ const ComentarioSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+const ItensEstoqueSchema = new mongoose.Schema(
+  {
+    nome: {
+      type: String,
+      required: true,
+    },
+    Valor: {
+      type: Number,
+      required: true,
+    },
+    Quantidade: {
+      type: Number,
+      required: true,
+    },
+    slug: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+
 export const User = mongoose.models?.User || mongoose.model("User", userSchema);
-export const Post = mongoose.models?.Post || mongoose.model("Post", postSchema);
 export const Comentario =
   mongoose.models?.Comentario || mongoose.model("Comentario", ComentarioSchema);
+export const Estoque =
+  mongoose.models?.Estoque || mongoose.model("Estoque", ItensEstoqueSchema);

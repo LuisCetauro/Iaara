@@ -11,32 +11,25 @@ export default async function Home() {
         <div className="w-4/5 ml-8 h-3/5 md:ml-16  pb-6 text-center lg:w-5/5 lg:ml-0 ">
           <div>
             <h1 className=" md:text-center md:mt-12 md:text-2xl lg:mt-4 lg:pb-6  pb-4 ">
-              Bem vindo a Iaara! Agilize o fluxo do rio chamado vida!
+              Bem vindo a Karen Cris Store. Work in Progress
             </h1>
-            <p className="md:h-60 md:text-2xl lg:w-4/5 lg:ml-20 text-sm pb-4  ">
-              A Iaara é uma empresa criada para agilizar seu dia a dia,
-              proporcionando maneiras fáceis e interativas de compartilhar suas
-              vivências. Foi criada em 2024 e desde então estamos revolucionando
-              o mercado. Venha conhecer mais e fazer parte da nossa jornada, vem
-              pra Iaara!
-            </p>
           </div>
           <div className="pb-0 lg:mt-16 lg:ml-12  ">
-            <Link href="/About">
+            <Link href="/Sobre">
               <button className="border-4 border-cor5 bg-cor6 rounded-full p-2 mr-2 text-cor8">
                 Conheça
               </button>
             </Link>
-            <Link href="/Contact">
+            <Link href="/Contato">
               <button className=" border-4 border-cor5 bg-cor6 rounded-full p-2 mr-2 text-cor8">
-                Contact
+                Contato
               </button>
             </Link>
             {session ? (
               <></>
             ) : (
               <Link href="/Cadastro">
-                <button className=" border-4 border-cor5 bg-cor6 rounded-full p-2 text-cor8">
+                <button className="hidden border-4 border-cor5 bg-cor6 rounded-full p-2 text-cor8">
                   Cadastre-se
                 </button>
               </Link>

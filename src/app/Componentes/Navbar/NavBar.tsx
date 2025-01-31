@@ -17,7 +17,7 @@ export default async function NavBar() {
     <div className=" w-screen  h-20 text-white  border-b-8 border-cor5 bg-cor6 flex justify-center gap-2 2xl:gap-60">
       <Link href="/">
         <div className="mt-3 mr-12 border-2 border-cor5 w-20 h-12 relative  ">
-          <Image src="/teste.jpg" alt="" fill />
+          <Image src="/mini_logo.jpg" alt="" fill />
         </div>
       </Link>
       <div className="-ml-16 mt-1 lg:mt-3 lg:ml-20 ">

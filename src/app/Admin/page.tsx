@@ -1,10 +1,10 @@
 import { auth } from "@/lib/auth";
-import { getAdmin, getComentario } from "@/lib/data";
+import { getAdmin, getComentarios } from "@/lib/data";
 import Link from "next/link";
 import { DeleteComent } from "../Componentes/DeleteComentario";
 
 export default async function AdminContact() {
-  const comentarios = await getComentario();
+  const comentarios = await getComentarios();
   const session = await auth();
   let isAdmin = false;
 
@@ -18,8 +18,15 @@ export default async function AdminContact() {
       {isAdmin ? (
         <div>
           <div className=" w-2/5 ml-32 mb-4 text-center rounded-full p-1 md:ml-56 border-4 border-cor5 bg-cor6 mt-2  lg:w-1/5 lg:ml-12 text-cor8">
-            <Link href="/Admin/Mural">Admin/Mural</Link>
+            <Link href="/Admin/Mural">Atualizar Estoque</Link>
           </div>
+          <div className=" w-2/5 ml-32 mb-4 text-center rounded-full p-1 md:ml-56 border-4 border-cor5 bg-cor6 mt-2  lg:w-1/5 lg:ml-12 text-cor8">
+            <Link href="/Admin/NewItem">Adicionar Item</Link>
+          </div>
+          <div className=" w-2/5 ml-32 mb-4 text-center rounded-full p-1 md:ml-56 border-4 border-cor5 bg-cor6 mt-2  lg:w-1/5 lg:ml-12 text-cor8">
+            <Link href="/Admin/Setting">Alterar Senha</Link>
+          </div>
+
           {comentarios ? (
             <div className=" text-center text-sm lg:w-3/5 lg:ml-60">
               {comentarios.map((comentario) => (
@@ -29,7 +36,7 @@ export default async function AdminContact() {
                   <div className="w-4/5 ml-12">
                     <p className="mt-2">{comentario.desc}</p>
                   </div>
-                  <div className="mt-4 mb-4">
+                  <div className="mt-4 mb-4 text-cor8">
                     <DeleteComent comentario={comentario} />
                   </div>
                 </div>

@@ -13,3 +13,5 @@ O que ela faz?
 4- Registrar as diferentes informações como usuários, postes e comentários para o adminstrador em diferentes coleções no MongoDB.
 5- Utilização da biblioteca Mongoose para criação dos diferentes Schemas utilizados.
 6- Fornecer ao Admin páginas únicas para manutenção do "Mural" e para ter acesso as informações que chegam pela página "Contato".
+
+oq falta fazer : editar valor e quantidade dos itens no estoque, adicionar e deletar itens do estoque

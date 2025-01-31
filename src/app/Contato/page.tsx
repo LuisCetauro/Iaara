@@ -4,7 +4,7 @@ import { CriarComentario } from "../Componentes/Comentario/Comentario";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "",
+  title: "Contato",
   description:
     "Estamos sempre abertos a sugestões para melhorar. Sua opinião é importante para nós. Entre em contato conosco e compartilhe suas ideias. Juntos, podemos tornar nossa experiência ainda melhor.",
 };
@@ -22,9 +22,9 @@ function Contact() {
       </div>
       <div className="hidden  2xl:block  w-2/5 ml-24 text-sm">
         <p>
-          A IAara é uma plataforma criada para melhorar o seu dia a dia.Voce é
-          nossa prioridade e por isso queremos escutar o que voce tem para
-          dizer, use esse espaço para dar suas sugestôes.
+          A Karen Cris Store é uma plataforma criada para melhorar o seu dia a
+          dia.Voce é nossa prioridade e por isso queremos escutar o que voce tem
+          para dizer, use esse espaço para dar suas sugestôes.
         </p>
       </div>
     </>
