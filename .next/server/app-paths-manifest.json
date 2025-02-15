@@ -1,0 +1,16 @@
+{
+  "/_not-found": "app/_not-found.js",
+  "/Admin/page": "app/Admin/page.js",
+  "/Admin/Mural/page": "app/Admin/Mural/page.js",
+  "/Cadastro/page": "app/Cadastro/page.js",
+  "/CreatePost/page": "app/CreatePost/page.js",
+  "/Mural/[slug]/page": "app/Mural/[slug]/page.js",
+  "/Mural/page": "app/Mural/page.js",
+  "/icon.jpg/route": "app/icon.jpg/route.js",
+  "/page": "app/page.js",
+  "/Contato/page": "app/Contato/page.js",
+  "/api/Mural/[slug]/route": "app/api/Mural/[slug]/route.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/Mural/route": "app/api/Mural/route.js",
+  "/Sobre/page": "app/Sobre/page.js"
+}
